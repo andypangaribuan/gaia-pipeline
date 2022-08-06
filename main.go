@@ -19,6 +19,18 @@ func CreateUser(args sdk.Arguments) error {
 	}
 	log.Println(out)
 
+
+	out, e, err = sh("hostname")
+	if err != nil {
+		return err
+	}
+	if e != nil {
+		log.Printf("exit-error: %v\n", e)
+		return e
+	}
+	log.Println(out)
+
+
 	// lets sleep to simulate that we do something
 	time.Sleep(5 * time.Second)
 	log.Println("CreateUser has been finished!")

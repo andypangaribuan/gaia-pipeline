@@ -9,6 +9,15 @@ import (
 
 func CreateUser(args sdk.Arguments) error {
 	log.Println("CreateUser has been started!")
+	out, e, err := sh("pwd")
+	if err != nil {
+		return err
+	}
+	if e != nil {
+		log.Printf("exit-error: %v\n", e)
+		return e
+	}
+	log.Println(out)
 
 	// lets sleep to simulate that we do something
 	time.Sleep(5 * time.Second)
@@ -75,4 +84,6 @@ func main() {
 	if err := sdk.Serve(jobs); err != nil {
 		panic(err)
 	}
+
+	// CreateUser(nil)
 }

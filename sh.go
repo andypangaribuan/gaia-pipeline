@@ -6,7 +6,7 @@ import (
 	"os/exec"
 )
 
-func sh(command string, args ...any) (string, *exec.ExitError, error) {
+func sh(command string, args ...interface{}) (string, *exec.ExitError, error) {
 	if len(args) > 0 {
 		command = fmt.Sprintf(command, args...)
 	}

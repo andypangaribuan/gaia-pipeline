@@ -31,6 +31,31 @@ func CreateUser(args sdk.Arguments) error {
 	log.Println(out)
 
 
+	log.Println("os version")
+	out, e, err = sh("cat /etc/os-release")
+	if err != nil {
+		return err
+	}
+	if e != nil {
+		log.Printf("exit-error: %v\n", e)
+		return e
+	}
+	log.Println(out)
+
+
+	log.Println("xyz")
+	out, e, err = sh("cat /data/repo/xyz")
+	if err != nil {
+		return err
+	}
+	if e != nil {
+		log.Printf("exit-error: %v\n", e)
+		return e
+	}
+	log.Println(out)
+
+
+
 	// lets sleep to simulate that we do something
 	time.Sleep(5 * time.Second)
 	log.Println("CreateUser has been finished!")
